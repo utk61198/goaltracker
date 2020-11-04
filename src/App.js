@@ -64,6 +64,10 @@ class App extends React.Component {
 
               Email: {this.state.currentUser.email}
               </Typography>
+              <Typography variant="h6" component="h2" gutterBottom color="primary">
+
+uid: {this.state.currentUser.uid}
+</Typography>
 
               <Button variant="outlined" color="primary" onClick={() => auth.signOut()}>LOG OUT</Button>
               </Grid>
