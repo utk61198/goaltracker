@@ -1,10 +1,12 @@
 // App.js
 import React from 'react';
-
 import { signInWithGoogle } from './firebase';
 import {auth} from './firebase';
-
 import { Grid,Button ,makeStyles,Paper,Typography} from '@material-ui/core';
+import AddGoal from "./components/AddGoal";
+import NavBar from "./components/Navbar"
+import { Add } from '@material-ui/icons';
+import UserDetail from './components/UserDetails';
 
 
 
@@ -39,42 +41,35 @@ class App extends React.Component {
           this.state.currentUser ?
 
             (
+
               <div>
-                <Paper
-                elevation={3}
-                style={{height:"50vh",marginTop:"10%"}}>
-                 <Grid
+                <NavBar/>
+              
+                <Grid
   container
   direction="column"
-  justify="space-between"
+  justify="space-evenly"
   alignItems="center"
   style={{marginTop:"10px"}}
-  
+>      
+               
+   <UserDetail user={this.state.currentUser}/>
 
->
-                
-                
-                {/* <img src={this.state.currentUser.photoURL} /> */}
-              
-                <Typography variant="h6" component="h2" gutterBottom color="primary">
+              <AddGoal/>
+              <Button variant="outlined" color="primary" onClick={() => auth.signOut()} gutterBottom>LOG OUT</Button>
 
-              Name: {this.state.currentUser.displayName}
-              </Typography>
-              <Typography variant="h6" component="h2" gutterBottom color="primary">
-
-              Email: {this.state.currentUser.email}
-              </Typography>
-              <Typography variant="h6" component="h2" gutterBottom color="primary">
-
-uid: {this.state.currentUser.uid}
-</Typography>
-
-              <Button variant="outlined" color="primary" onClick={() => auth.signOut()}>LOG OUT</Button>
               </Grid>
-              </Paper>
+
             
             </div>
-            ) :
+            )
+            
+            
+            
+            
+            
+            
+            :
 
            
                <Grid
