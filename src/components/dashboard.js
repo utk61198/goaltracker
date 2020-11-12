@@ -11,7 +11,8 @@ import {
 } from "@material-ui/core"
 
 class Dashboard extends React.Component {
-  
+
+
     constructor(props) {
         super(props);
 
@@ -144,11 +145,11 @@ class Dashboard extends React.Component {
                                     <input type="hidden" ref="uid" />
                                     <div className="form-group col-md-6">
                                         <label>Goal</label>
-                                        <TextField type="text" ref="gname"/>
+                                        <input type="text" ref="gname" className="form-control" placeholder="Goal title.."/>
                                     </div>
                                     <div className="form-group col-md-6">
                                         <label>Description</label>
-                                        <input type="text" ref="gdesc" className="form-control" placeholder="description.." />
+                                        <input type="text" ref="gdesc" className="form-control"  placeholder="description.." />
                                     </div>
                                 </div>
                                 <button type="submit" className="btn btn-primary">
