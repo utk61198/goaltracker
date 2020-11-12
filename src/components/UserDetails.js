@@ -25,10 +25,10 @@ export default function UserDetail(props) {
 
            Email: {props.user.email}
            </Typography>
-           {/* <Typography variant="h6" component="h2" gutterBottom color="primary">
+           <Typography variant="h6" component="h2" gutterBottom color="primary">
 
 uid: {props.user.uid}
-</Typography> */}
+</Typography>
 
 </Paper>
             

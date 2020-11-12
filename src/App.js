@@ -2,11 +2,11 @@
 import React from 'react';
 import { signInWithGoogle } from './firebase';
 import {auth} from './firebase';
-import { Grid,Button ,makeStyles,Paper,Typography} from '@material-ui/core';
-import AddGoal from "./components/AddGoal";
+import { Grid,Button,Paper,Typography} from '@material-ui/core';
+import Dashboad from "./components/dashboard";
 import NavBar from "./components/Navbar"
-import { Add } from '@material-ui/icons';
-import UserDetail from './components/UserDetails';
+// import { Add } from '@material-ui/icons';
+// import UserDetail from './components/UserDetails';
 
 
 
@@ -53,10 +53,10 @@ class App extends React.Component {
   style={{marginTop:"10px"}}
 >      
                
-   <UserDetail user={this.state.currentUser}/>
+   {/* <UserDetail user={this.state.currentUser}/> */}
 
-              <AddGoal/>
-              <Button variant="outlined" color="primary" onClick={() => auth.signOut()} gutterBottom>LOG OUT</Button>
+              <Dashboad user={this.state.currentUser}/>
+              <Button variant="outlined" color="primary" onClick={() => auth.signOut()}>LOG OUT</Button>
 
               </Grid>
 
