@@ -7,12 +7,10 @@ import {
     TextField,
     Button,
     Typography,
-    Form
 } from "@material-ui/core"
+import Form from 'react-bootstrap/Form'
 
 class Dashboard extends React.Component {
-
-
     constructor(props) {
         super(props);
 
@@ -88,78 +86,56 @@ class Dashboard extends React.Component {
         const { goals } = this.state;
         return (
             <React.Fragment>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-xl-12">
-                            <h1>Add a new goal</h1>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-xl-12">
-                            {
-                                goals.map(goal => (
-                                    <div key={
-                                        goal.uid
-                                    }
-                                        className="card float-left"
-                                        style={
-                                            {
-                                                width: "18rem",
-                                                marginRight: "1rem"
-                                            }
-                                        }>
-                                        <div className="card-body">
-                                            <h5 className="card-title">
-                                                {
-                                                    goal.gname
-                                                }</h5>
-                                            <p className="card-text">
-                                                {
-                                                    goal.gdesc
-                                                }</p>
-                                            <button onClick={
-                                                () => this.removeData(goal)
-                                            }
-                                                className="btn btn-link">
-                                                Delete
-                                        </button>
-                                            <button onClick={
-                                                () => this.updateData(goal)
-                                            }
-                                                className="btn btn-link">
-                                                Edit
-                                        </button>
-                                        </div>
-                                    </div>
-                                ))
-                            } </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-xl-12">
+                <div>
 
 
-                            <form onSubmit={
-                                this.handleSubmit
-                            }>
-                                <div className="form-row">
-                                    <input type="hidden" ref="uid" />
-                                    <div className="form-group col-md-6">
-                                        <label>Goal</label>
-                                        <input type="text" ref="gname" className="form-control" placeholder="Goal title.."/>
-                                    </div>
-                                    <div className="form-group col-md-6">
-                                        <label>Description</label>
-                                        <input type="text" ref="gdesc" className="form-control"  placeholder="description.." />
-                                    </div>
-                                </div>
-                                <button type="submit" className="btn btn-primary">
+
+                    <div>
+                        <Form onSubmit={
+                            this.handleSubmit
+                        }>
+
+
+                            <Grid
+                                container
+                                direction="column"
+                                justify="space-around"
+                                alignItems="center"
+
+
+                            >
+                                <Typography variant="h4" gutterBottom color="primary">
+                                    Add a new goal
+
+                                </Typography>
+
+                                <Form.Control type="hidden" ref="uid" />
+                                <Typography gutterBottom>
+                                    <Form.Control type="text" ref="gname" className="form-control" placeholder="Goal title.." />
+                                </Typography>
+                                <Typography gutterBottom>
+                                    <Form.Control type="text" ref="gdesc" className="form-control" placeholder="description.." />
+                                </Typography>
+                                <Typography gutterBottom>
+                                    <Form.Control type="date" ref="gdate" className="form-control" placeholder="Enter deadline" />
+
+
+                                </Typography>
+                                <Typography gutterBottom>
+                                <Button variant="outlined" type="submit" color="primary">
                                     Save
-                                </button>
-                            </form>
-                        </div>
+                                </Button>
+
+                                </Typography>
+                                
+
+                            </Grid>
+
+                        </Form>
                     </div>
 
                 </div>
+
             </React.Fragment>
         );
     }
