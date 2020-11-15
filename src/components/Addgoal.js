@@ -222,11 +222,11 @@ class AddGoal extends React.Component {
 
 
                 <div>
-
-
-                <Typography gutterBottom variant='h4' color="primary" align="left" style={{ fontFamily: "Sansita Swashed", marginBottom: "2%" }}>
+                 {goals.length>0 && <Typography gutterBottom variant='h4' color="primary" align="left" style={{ fontFamily: "Sansita Swashed", marginBottom: "2%" }}>
                         My Goals
-                  </Typography>
+                  </Typography>}
+
+               
         {
 
           goals.map(goal => (
