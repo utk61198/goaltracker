@@ -4,9 +4,11 @@ import { signInWithGoogle, signInWithFacebook } from './firebase';
 import { auth } from './firebase';
 import { Grid, Button, Paper, Typography, Divider } from '@material-ui/core';
 import AddGoal from "./components/Addgoal";
-import NavBar from "./components/Navbar"
+// import NavBar from "./components/Navbar"
 import FacebookIcon from '@material-ui/icons/Facebook';
 import Helmet from "react-helmet"
+import {Navbar,Nav,NavDropdown} from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {
   FcGoogle
@@ -69,7 +71,22 @@ class App extends React.Component {
 
               }}>
 
-                <NavBar />
+                <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+                  <Navbar.Brand href="#home">Goal Tracker</Navbar.Brand>
+                  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                  <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="ml-auto">
+                      <Nav.Link href="#features">Dashboard</Nav.Link>
+                      <Button variant="contained" color="secondary" onClick={() => auth.signOut()}>Log Out</Button>
+
+
+
+                    </Nav>
+
+                  </Navbar.Collapse>
+                </Navbar>
+
+
 
 
 
@@ -89,36 +106,24 @@ class App extends React.Component {
 
                 >
 
-                    <Slide/>
+                  {/* <Slide/> */}
+
+
+
+
+
+
+
+
+
 
 
                
+                      
+                      <AddGoal user={this.state.currentUser} />
 
 
-
-
-
-
-
-
-                  {/* <UserDetail user={this.state.currentUser}/> */}
-
-                  <Typography variant="h4" gutterBottom color="primary" style={{ fontFamily: "Sansita Swashed", marginBottom: "2%" }}>
-                    Add a new goal
-
-                                </Typography>
-
-                  <AddGoal user={this.state.currentUser} />
-
-                  <Typography gutterBottom variant='h4' color="primary" align="left" style={{ fontFamily: "Sansita Swashed", marginBottom: "2%" }}>
-                    My Goals
-                  </Typography>
-                  <List user={this.state.currentUser} />
-                  <Button variant="contained" color="secondary" onClick={() => auth.signOut()}
-                    style={{
-                      marginTop: "10px"
-                    }}>LOG OUT</Button>
-
+                   
                 </Grid>
 
 
@@ -157,15 +162,15 @@ class App extends React.Component {
               >
 
                 <Typography gutterBottom>
-                  <img src={logo}/>
+                  <img src={logo} />
 
 
 
                 </Typography>
-                </motion.div>
+              </motion.div>
 
-                <Typography variant="h2" component="h2" gutterBottom color="primary">
-                  Goal Tracker</Typography>
+              <Typography variant="h2" component="h2" gutterBottom color="primary">
+                Goal Tracker</Typography>
 
 
 

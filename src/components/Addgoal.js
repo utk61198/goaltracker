@@ -8,10 +8,22 @@ import {
     Button,
     Typography,
     Checkbox,
-    Paper
+    Paper,
+    CardActions,
+    CardMedia,
+    Card,
+    CardActionArea,
+    CardContent
 } from "@material-ui/core"
 import Form from 'react-bootstrap/Form'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import EditIcon from '@material-ui/icons/Edit';
+import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
+import DoneIcon from '@material-ui/icons/Done';
+import DoneAllIcon from '@material-ui/icons/DoneAll';
+import goalimg from "../carouselimages/goal2.jpg"
+
+
 
 
 class AddGoal extends React.Component {
@@ -99,6 +111,17 @@ class AddGoal extends React.Component {
         const { goals } = this.state;
         return (
             <React.Fragment>
+                <Grid
+                container
+                direction="row"
+                justify="space-evenly"
+                alignItems="baseline"
+                style={{
+                  background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'
+
+
+
+                }}>
                 <div>
 
 
@@ -117,6 +140,11 @@ class AddGoal extends React.Component {
 
 
                             >
+                                <Typography variant="h4" gutterBottom color="primary" style={{ fontFamily: "Sansita Swashed", marginBottom: "2%" }} align="left">
+                        Add a new goal
+
+                                </Typography>
+
                                
 
                                 <Form.Control type="hidden" ref="uid" />
@@ -191,6 +219,112 @@ class AddGoal extends React.Component {
                     </div>
 
                 </div>
+
+
+                <div>
+
+
+                <Typography gutterBottom variant='h4' color="primary" align="left" style={{ fontFamily: "Sansita Swashed", marginBottom: "2%" }}>
+                        My Goals
+                  </Typography>
+        {
+
+          goals.map(goal => (
+            <div key={goal.uid}>
+
+              <Card style={{
+                display: 'flex',
+                marginBottom: "5%",
+                justifyContent: "center",
+                marginLeft: "1%",
+                marginRight: "1%",
+
+              }}>
+                <CardActionArea style={{ color: "black" }}>
+                  <Grid>
+                    <CardMedia
+                      component="img"
+                      alt="Contemplative Reptile"
+                      height="150"
+                      image={goalimg}
+
+
+                    />
+                    <CardContent >
+
+
+                      <div>
+
+
+                        <Typography gutterBottom variant="h5" component="h2">
+                          {goal.gname}
+
+                        </Typography>
+                        <Typography variant="body1" color="textSecondary" component="p" gutterBottom>
+                         <Form.Control as="textarea" disabled={true} value={goal.gdesc}></Form.Control>
+                        </Typography>
+
+                      </div>
+
+                      {/* <Typography variant="body2" color="secondary" component="p" align="right" >
+                      Goal Deadline: {goal.gdate}
+                    </Typography> */}
+                    </CardContent>
+                  </Grid>
+
+                </CardActionArea>
+                <CardActions>
+                  <Grid
+                    container
+                    direction="column"
+                    justify="space-evenly"
+                    alignItems="flex-start"
+                  >
+                    <Typography gutterBottom>
+                      <Button variant="contained" size="small" endIcon={<DoneAllIcon />} style={{ color: "green", fontWeight: "bold", marginBottom: "20%" }
+                    }
+                    onClick={()=>this.removeData(goal)}
+                    >
+                        Finished</Button>
+
+                    </Typography>
+                    <Typography gutterBottom>
+                      <Button variant="outlined" size="small" color="primary" endIcon={<EditIcon />} style={{ marginBottom: "20%" }}
+                      onClick={()=>this.updateData(goal)}>
+                        Edit</Button>
+
+                    </Typography>
+
+
+                  
+
+                    <Typography variant="body2" color="secondary" component="p" align="left">
+                      {goal.gdate}
+                    </Typography>
+
+                  </Grid>
+
+                </CardActions>
+              </Card>
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+          ))}
+      </div>
+      </Grid>
 
             </React.Fragment>
         );
