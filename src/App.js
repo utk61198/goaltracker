@@ -89,12 +89,10 @@ class App extends React.Component {
 
                 >
 
-                  {/* <Paper elevation={3}>
                     <Slide/>
 
-                    </Paper>
 
-                */}
+               
 
 
 
