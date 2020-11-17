@@ -22,8 +22,6 @@ import ToDo from "./components/Todo"
 
 
 
-
-
 // import { Add } from '@material-ui/icons';
 // import UserDetail from './components/UserDetails';
 
@@ -105,7 +103,9 @@ background: "linear-gradient(to right, #61045F, #AA076B)", /* W3C, IE 10+/ Edge,
                   justify="space-evenly"
                   alignItems="center"
                   style={{
-                    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'
+                    background: "#AA076B",  /* fallback for old browsers */
+background: "-webkit-linear-gradient(to right, #61045F, #AA076B)",  /* Chrome 10-25, Safari 5.1-6 */
+background: "linear-gradient(to right, #61045F, #AA076B)",
 
 
 
@@ -114,6 +114,9 @@ background: "linear-gradient(to right, #61045F, #AA076B)", /* W3C, IE 10+/ Edge,
                 >
 
                   <Slide/>
+                  {/* <speech></speech> */}
+                  
+                  
 
 
 
@@ -148,7 +151,6 @@ background: "linear-gradient(to right, #61045F, #AA076B)", /* W3C, IE 10+/ Edge,
 
                
                       
-                      {/* <AddGoal user={this.state.currentUser} /> */}
 
 
                    

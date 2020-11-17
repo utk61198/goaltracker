@@ -24,6 +24,7 @@ import DoneAllIcon from '@material-ui/icons/DoneAll';
 import goalimg from "../carouselimages/goal2.jpg"
 import Helmet from "react-helmet"
 import DeleteIcon from '@material-ui/icons/Delete';
+import Example from "./Speechtodo"
 
 
 
@@ -122,7 +123,8 @@ class ToDo extends React.Component {
                 justify="space-evenly"
                 alignItems="baseline"
                 style={{
-                  background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'
+                  background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+                  borderRadius:"2vh"
 
 
 
@@ -188,18 +190,24 @@ class ToDo extends React.Component {
                     justify="space-evenly"
                     alignItems="flex-start"
                   >
+                   
+                    <Typography gutterBottom>
+                      <Button variant="outlined" size="small" color="primary" endIcon={<EditIcon />} style={{ marginBottom: "20%" }}
+                      onClick={()=>this.updateData(goal)}>
+                        Edit</Button>
+
+                    </Typography>
+                     <Typography gutterBottom>
+                     <Example speech={goal.gname}/>
+
+
+                     </Typography>
                     <Typography gutterBottom>
                       <Button variant="contained" size="small" endIcon={<DeleteIcon />} style={{ backgroundColor:"red", fontWeight: "bold", marginBottom: "20%" }
                     }
                     onClick={()=>this.removeData(goal)}
                     >
                         Delete</Button>
-
-                    </Typography>
-                    <Typography gutterBottom>
-                      <Button variant="outlined" size="small" color="primary" endIcon={<EditIcon />} style={{ marginBottom: "20%" }}
-                      onClick={()=>this.updateData(goal)}>
-                        Edit</Button>
 
                     </Typography>
 
