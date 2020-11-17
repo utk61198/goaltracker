@@ -17,6 +17,9 @@ import Slide from "./components/Caraousel"
 import List from "./components/GoalList"
 import { motion } from "framer-motion"
 import logo from "./carouselimages/logo192.png"
+import { Tabs, Tab } from 'react-bootstrap';
+import ToDo from "./components/Todo"
+
 
 
 
@@ -65,7 +68,11 @@ class App extends React.Component {
             (
 
               <div style={{
-                background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+                // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+                background: "#AA076B",  /* fallback for old browsers */
+background: "-webkit-linear-gradient(to right, #61045F, #AA076B)",  /* Chrome 10-25, Safari 5.1-6 */
+background: "linear-gradient(to right, #61045F, #AA076B)", /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
                 height: "100vh"
 
 
@@ -106,7 +113,28 @@ class App extends React.Component {
 
                 >
 
-                  {/* <Slide/> */}
+                  <Slide/>
+
+
+
+
+                  <Tabs
+          id="controlled-tab-example"
+          style={{marginTop:"2%"}}
+          
+        >
+   
+          <Tab eventKey="goals" title="Goals">
+          <AddGoal user={this.state.currentUser} />
+          </Tab>
+          <Tab eventKey="todo" title="To do">
+            <ToDo user={this.state.currentUser}/>
+            
+          </Tab>
+      
+       
+        </Tabs>
+
 
 
 
@@ -120,7 +148,7 @@ class App extends React.Component {
 
                
                       
-                      <AddGoal user={this.state.currentUser} />
+                      {/* <AddGoal user={this.state.currentUser} /> */}
 
 
                    
@@ -148,7 +176,7 @@ class App extends React.Component {
             >
               <motion.div
                 animate={{
-                  scale: [1, 1.1, 1.1, 1.1, 1],
+                  scale: [1, 1.05, 1.05, 1.05, 1],
                   rotate: [0, 0, 270, 270, 0],
                   borderRadius: ["20%", "20%", "50%", "50%", "20%"],
                 }}

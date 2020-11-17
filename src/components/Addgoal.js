@@ -22,6 +22,8 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 import DoneIcon from '@material-ui/icons/Done';
 import DoneAllIcon from '@material-ui/icons/DoneAll';
 import goalimg from "../carouselimages/goal2.jpg"
+import Helmet from "react-helmet"
+
 
 
 
@@ -65,6 +67,13 @@ class AddGoal extends React.Component {
         let uid = this.refs.uid.value;
         let gdate = this.refs.gdate.value;
         let often = this.refs.often.value
+        let mo=this.refs.mo.value
+        let tu=this.refs.tu.value
+        let we=this.refs.we.value
+        let th=this.refs.th.value
+        let fr=this.refs.fr.value
+        let sa=this.refs.sa.value
+        let su=this.refs.su.value
 
         if (uid && gname && gdesc && gdate) {
             const { goals } = this.state;
@@ -75,12 +84,24 @@ class AddGoal extends React.Component {
             goals[devIndex].gdesc = gdesc;
             goals[devIndex].gdate = gdate;
             goals[devIndex].often = often
+            goals[devIndex].mo=mo;
+            goals[devIndex].tu=tu;
+            goals[devIndex].we=we;
+            goals[devIndex].th=th;
+            goals[devIndex].fr=fr;
+            goals[devIndex].sa=sa;
+            goals[devIndex].su=su;
+
+
 
             this.setState({ goals });
         } else if (gname && gdesc && gdate) {
             const uid = new Date().getTime().toString();
             const { goals } = this.state;
-            goals.push({ uid, gname, gdesc, gdate, often });
+            goals.push({ uid, gname, gdesc, gdate, often,mo
+                ,tu,we,th,fr,sa,su 
+            
+            });
             this.setState({ goals });
         }
 
@@ -89,6 +110,13 @@ class AddGoal extends React.Component {
         this.refs.uid.value = "";
         this.refs.gdate.value = "";
         this.refs.often.value = "";
+        this.refs.mo.value="Mon"
+        this.refs.tu.value="Tue"
+        this.refs.we.value="Wed"
+        this.refs.th.value="Thu"
+        this.refs.fr.value="Fri"
+        this.refs.sa.value="Sat"
+        this.refs.su.value="Sun"
     };
 
     removeData = goal => {
@@ -105,12 +133,27 @@ class AddGoal extends React.Component {
         this.refs.gdesc.value = goal.gdesc;
         this.refs.gdate.value = goal.gdate
         this.refs.often.value = goal.often
+        this.refs.mo.value=goal.mo
+        this.refs.tu.value=goal.tu
+        this.refs.we.value=goal.we
+        this.refs.th.value=goal.th
+        this.refs.fr.value=goal.fr
+        this.refs.sa.value=goal.sa
+        this.refs.su.value=goal.su
+        
+
+        
+
     };
 
     render() {
         const { goals } = this.state;
         return (
             <React.Fragment>
+                 <Helmet>
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap" rel="stylesheet" />
+        </Helmet>
                 <Grid
                 container
                 direction="row"
@@ -118,113 +161,18 @@ class AddGoal extends React.Component {
                 alignItems="baseline"
                 style={{
                   background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'
+                  
 
 
 
                 }}>
-                <div>
+               
 
 
-
-                    <div>
-                        <Form onSubmit={
-                            this.handleSubmit
-                        }>
-
-
-                            <Grid
-                                container
-                                direction="column"
-                                justify="space-around"
-                                alignItems="center"
-
-
-                            >
-                                <Typography variant="h4" gutterBottom color="primary" style={{ fontFamily: "Sansita Swashed", marginBottom: "2%" }} align="left">
-                        Add a new goal
-
-                                </Typography>
-
-                               
-
-                                <Form.Control type="hidden" ref="uid" />
-                                <Typography gutterBottom>
-                                    <Form.Control type="text" ref="gname" className="form-control" placeholder="Goal title.." />
-                                </Typography>
-                                <Typography gutterBottom>
-                                    <Form.Control type="text" ref="gdesc" className="form-control" placeholder="description.." />
-                                </Typography>
-                                <Typography gutterBottom>
-                                    <Form.Control type="date" ref="gdate" placeholder="Enter deadline" style={{width:"221px"}} />
-
-
-                                </Typography>
-                                {/* <Form.Control type="checkbox" ref="daily"></Form.Control> */}
-                                <Typography variant="h5" gutterBottom color="primary">
-                                    How often?
-                                    
-                                </Typography>
-
-                                <Typography gutterBottom>
-                                    <Form.Control as="select" size="sm" ref="often">
-                                        <option>Daily</option>
-                                        <option>3 times a week</option>
-                                        <option>5 times a week</option>
-
-                                        
-
-                                       
-
-                                    </Form.Control>
-                                    </Typography>
-
-
-                                    {/* <Typography variant="h5" gutterBottom color="primary">
-                                    Or customize
-                                    
-                                </Typography> */}
-                                {/* <Typography component="div" style={{ backgroundColor: '#5AB9EA', paddingLeft: "10px", paddingRight: "10px", paddingTop: "10px", borderRadius: "20px" }} gutterBottom>
-                                    {['checkbox'].map((type) => (
-                                        <div key={`inline-${type}`} className="mb-3">
-                                            <Grid
-                                                container
-                                                direction="column">
-                                                <Form.Check inline label="Monday" type={type} id={`inline-${type}-1`} style={{ color: "white" }} />
-                                                <Form.Check inline label="Tuesday" type={type} id={`inline-${type}-2`} style={{ color: "white" }} />
-                                                <Form.Check inline label="Wednesday" type={type} id={`inline-${type}-1`} style={{ color: "white" }} />
-                                                <Form.Check inline label="Thursday" type={type} id={`inline-${type}-2`} style={{ color: "white" }} />
-                                                <Form.Check inline label="Friday" type={type} id={`inline-${type}-1`} style={{ color: "white" }} />
-                                                <Form.Check inline label="Saturday" type={type} id={`inline-${type}-2`} style={{ color: "white" }} />
-                                                <Form.Check inline label="Sunday" type={type} id={`inline-${type}-1`} style={{ color: "white" }} />
-
-                                            </Grid>
-
-
-                                        </div>
-                                    ))}
-                                </Typography> */}
-
-
-                                <Typography gutterBottom>
-                                    <Button variant="contained" type="submit" color="primary">
-                                        Save
-                                </Button>
-
-                                </Typography>
-
-
-                            </Grid>
-
-                        </Form>
-                    </div>
-
-                </div>
-
-
-                <div>
-                 {goals.length>0 && <Typography gutterBottom variant='h4' color="primary" align="left" style={{ fontFamily: "Sansita Swashed", marginBottom: "2%" }}>
+                {goals.length>0 && <div>
+                 <Typography gutterBottom variant='h4' color="primary" align="left" style={{ fontFamily: "Sansita Swashed", marginBottom: "2%",marginLeft:"10%" }}>
                         My Goals
-                  </Typography>}
+                  </Typography>
 
                
         {
@@ -236,8 +184,8 @@ class AddGoal extends React.Component {
                 display: 'flex',
                 marginBottom: "5%",
                 justifyContent: "center",
-                marginLeft: "1%",
-                marginRight: "1%",
+                marginLeft: "10%",
+                marginRight: "10%",
 
               }}>
                 <CardActionArea style={{ color: "black" }}>
@@ -323,7 +271,174 @@ class AddGoal extends React.Component {
 
 
           ))}
-      </div>
+      </div>}
+
+
+      <div>
+
+
+
+<div>
+    <Form inline onSubmit={
+        this.handleSubmit
+    }>
+
+
+        <Grid
+            container
+            direction="column"
+            justify="space-around"
+            alignItems="center"
+
+
+        >
+            <Typography variant="h4" gutterBottom color="primary" style={{ fontFamily: "Sansita Swashed", marginBottom: "2%" }} align="left">
+    Add a new goal
+
+            </Typography>
+
+           
+
+            <Form.Control type="hidden" ref="uid" />
+            <Typography gutterBottom>
+                <Form.Control type="text" ref="gname" className="form-control" placeholder="Goal title.." />
+            </Typography>
+            <Typography gutterBottom>
+                <Form.Control type="text" ref="gdesc" className="form-control" placeholder="description.." />
+            </Typography>
+            <Typography gutterBottom>
+                <Form.Control type="date" ref="gdate" placeholder="Enter deadline" style={{width:"221px"}} />
+
+
+            </Typography>
+            {/* <Form.Control type="checkbox" ref="daily"></Form.Control> */}
+            <Typography variant="h5" gutterBottom color="primary" style={{fontFamily:"Sansita Swashed"}}>
+                How often?
+                
+            </Typography>
+
+            <Typography gutterBottom>
+                <Form.Control as="select" size="sm" ref="often">
+                    <option>Daily</option>
+                    <option>3 times a week</option>
+                    <option>5 times a week</option>
+
+                    
+
+                   
+
+                </Form.Control>
+                </Typography>
+
+
+                <Typography variant="h5" gutterBottom color="primary" style={{fontFamily:"Sansita Swashed"}}>
+                Or customize
+                
+            </Typography>
+                       <Grid
+                       
+                      
+                       >
+                        <Form.Control as="select" size="sm" ref="mo" style={{marginBottom:"4%",marginLeft:"3%"}}>
+                        <option>Mon</option>
+
+                    <option>Yes</option>
+                    <option>No</option></Form.Control>
+
+
+
+                 
+                        <Form.Control as="select" size="sm" ref="tu" style={{marginBottom:"4%",marginLeft:"3%"}}>
+                        <option>Tue</option>
+
+                    <option>Yes</option>
+                    <option>No</option> </Form.Control>
+
+
+
+
+                 
+                        <Form.Control as="select" size="sm" ref="we" style={{marginBottom:"4%",marginLeft:"3%"}}>
+                        <option>Wed</option>
+
+                    <option>Yes</option>
+                    <option>No</option> </Form.Control>
+                
+
+
+                 
+                        <Form.Control as="select" size="sm" ref="th" style={{marginBottom:"4%",marginLeft:"3%"}}>
+                        <option>Thu</option>
+
+                    <option>Yes</option>
+                    <option>No</option> </Form.Control>
+                
+
+
+                 
+                        <Form.Control as="select" size="sm" ref="fr" style={{marginBottom:"4%",marginLeft:"3%"}}>
+                        <option>Fri</option>
+
+                    <option>Yes</option>
+                    <option>No</option> </Form.Control>
+                
+
+
+                 
+                        <Form.Control as="select" size="sm" ref="sa" style={{marginBottom:"4%",marginLeft:"3%"}}>
+                        <option>Sat</option>
+
+                    <option>Yes</option>
+                    <option>No</option> </Form.Control>
+                
+
+
+
+
+
+                 
+                        <Form.Control as="select" size="sm" ref="su" style={{marginBottom:"4%",marginLeft:"5%"}}>
+                        <option>Sun</option>
+
+                    <option>Yes</option>
+                    <option>No</option> </Form.Control>
+                    </Grid>
+
+
+                    
+
+                
+                            
+
+                       
+
+
+               
+
+          
+
+
+            <Typography gutterBottom>
+                <Button variant="contained" type="submit" color="primary">
+                    Save
+            </Button>
+
+            </Typography>
+
+
+        </Grid>
+
+    </Form>
+</div>
+
+</div>
+
+
+
+
+
+
+
       </Grid>
 
             </React.Fragment>
