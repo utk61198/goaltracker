@@ -255,7 +255,6 @@ class ToDo extends React.Component {
                         ref="gname"
                         className="form-control"
                         placeholder="New Todo..."
-                    
                       />
                     </Typography>
 

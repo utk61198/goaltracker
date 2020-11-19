@@ -18,6 +18,7 @@ import logo from "./carouselimages/logo192.png";
 import { Tabs, Tab } from "react-bootstrap";
 import ToDo from "./components/Todo";
 import StickyFooter from "./components/Footer";
+import UserDetail from "./components/UserDetails";
 
 // import { Add } from '@material-ui/icons';
 // import UserDetail from './components/UserDetails';
@@ -97,6 +98,9 @@ class App extends React.Component {
                 </Tab>
                 <Tab eventKey="todo" title="To do">
                   <ToDo user={this.state.currentUser} />
+                </Tab>
+                <Tab eventKey="deatils" title="My Account">
+                  <UserDetail user={this.state.currentUser}/>
                 </Tab>
               </Tabs>
             </Grid>
