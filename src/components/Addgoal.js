@@ -14,6 +14,9 @@ import {
   Card,
   CardActionArea,
   CardContent,
+Accordion,
+  AccordionSummary,
+  AccordionDetails
 } from "@material-ui/core";
 import Form from "react-bootstrap/Form";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -23,6 +26,8 @@ import DoneIcon from "@material-ui/icons/Done";
 import DoneAllIcon from "@material-ui/icons/DoneAll";
 import goalimg from "../carouselimages/goal2.jpg";
 import Helmet from "react-helmet";
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
 import Chip from "@material-ui/core/Chip";
 
 class AddGoal extends React.Component {
@@ -186,7 +191,8 @@ class AddGoal extends React.Component {
 
               {goals.map((goal) => (
                 <div key={goal.uid}>
-                  <Card
+                  <Paper
+                  elevation={20}
                     style={{
                       display: "flex",
                       marginBottom: "5%",
@@ -234,7 +240,7 @@ class AddGoal extends React.Component {
                             { <Chip color={goal.tu=="Yes"?"primary":"" } size="small" label="Tu"></Chip>}
                             {<Chip color={goal.we=="Yes"?"primary":"" } size="small" label="We"></Chip>}
                             {<Chip color={goal.th=="Yes"?"primary":"" } size="small" label="Th"></Chip>}
-                            { <Chip color={goal.fr=="Yes"?"primary":"" } size="small" label="Fr"></Chip>}
+                            {<Chip color={goal.fr=="Yes"?"primary":"" } size="small" label="Fr"></Chip>}
                             {<Chip color={goal.sa=="Yes"?"primary":"" } size="small" label="Sa"></Chip>}
                             {<Chip color={goal.su=="Yes"?"primary":"" } size="small" label="Su"></Chip>}
 
@@ -293,7 +299,7 @@ class AddGoal extends React.Component {
                         </Typography>
                       </Grid>
                     </CardActions>
-                  </Card>
+                  </Paper>
                 </div>
               ))}
             </div>
@@ -301,7 +307,18 @@ class AddGoal extends React.Component {
 
           <div>
             <div>
-              <Form inline onSubmit={this.handleSubmit}>
+            <Accordion>
+                      <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                      >
+                        <Typography>
+                            New Goal
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                      <Form inline onSubmit={this.handleSubmit}>
                 <Grid
                   container
                   direction="column"
@@ -459,6 +476,11 @@ class AddGoal extends React.Component {
                   </Typography>
                 </Grid>
               </Form>
+                      
+                      </AccordionDetails>
+                    </Accordion>
+
+             
             </div>
           </div>
         </Grid>

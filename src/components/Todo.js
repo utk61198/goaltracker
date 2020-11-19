@@ -141,7 +141,8 @@ class ToDo extends React.Component {
 
               {goals.map((goal) => (
                 <div key={goal.uid}>
-                  <Card
+                  <Paper
+                  elevation={20}
                     style={{
                       display: "flex",
                       marginBottom: "5%",
@@ -220,7 +221,7 @@ class ToDo extends React.Component {
                         </Typography>
                       </Grid>
                     </CardActions>
-                  </Card>
+                  </Paper>
                 </div>
               ))}
             </div>
