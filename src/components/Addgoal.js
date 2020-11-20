@@ -36,6 +36,7 @@ class AddGoal extends React.Component {
 
     this.state = {
       goals: [],
+      finished:[],
     };
   }
 
@@ -98,7 +99,7 @@ class AddGoal extends React.Component {
     } else if (gname && gdesc && gdate) {
       const uid = new Date().getTime().toString();
       const { goals } = this.state;
-      goals.push({
+      goals.unshift({
         uid,
         gname,
         gdesc,
@@ -130,11 +131,17 @@ class AddGoal extends React.Component {
   };
 
   removeData = (goal) => {
+    const {finished}=this.state
     const { goals } = this.state;
     const newState = goals.filter((data) => {
       return data.uid !== goal.uid;
     });
-    this.setState({ goals: newState });
+    finished.unshift(goal)
+
+    this.setState({ goals: newState,
+    finished
+    
+    });
   };
 
   updateData = (goal) => {
@@ -313,20 +320,8 @@ class AddGoal extends React.Component {
                         aria-controls="panel1a-content"
                         id="panel1a-header"
                       >
-                        <Typography>
-                            New Goal
-                        </Typography>
-                      </AccordionSummary>
-                      <AccordionDetails>
-                      <Form inline onSubmit={this.handleSubmit}>
-                <Grid
-                  container
-                  direction="column"
-                  justify="space-around"
-                  alignItems="center"
-                >
-                  <Typography
-                    variant="h4"
+                         <Typography
+                    variant="h5"
                     gutterBottom
                     color="primary"
                     style={{
@@ -337,6 +332,16 @@ class AddGoal extends React.Component {
                   >
                     Add a new goal
                   </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                      <Form inline onSubmit={this.handleSubmit}>
+                <Grid
+                  container
+                  direction="column"
+                  justify="space-around"
+                  alignItems="center"
+                >
+                
 
                   <Form.Control type="hidden" ref="uid" />
                   <Typography gutterBottom>

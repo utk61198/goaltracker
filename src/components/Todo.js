@@ -14,6 +14,9 @@ import {
   Card,
   CardActionArea,
   CardContent,
+  Accordion,
+  AccordionDetails,
+  AccordionSummary
 } from "@material-ui/core";
 import Form from "react-bootstrap/Form";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -28,6 +31,7 @@ import Example from "./Speechtodo";
 import Dictaphone from "./Speechrecognition";
 import AddCircleRoundedIcon from "@material-ui/icons/AddCircleRounded";
 import AddIcon from "@material-ui/icons/Add";
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 class ToDo extends React.Component {
   constructor(props) {
@@ -77,7 +81,7 @@ class ToDo extends React.Component {
     } else if (gname) {
       const uid = new Date().getTime().toString();
       const { goals } = this.state;
-      goals.push({ uid, gname });
+      goals.unshift({ uid, gname });
       this.setState({ goals });
     }
 
@@ -138,6 +142,8 @@ class ToDo extends React.Component {
               >
                 To do List
               </Typography>
+
+              
 
               {goals.map((goal) => (
                 <div key={goal.uid}>
@@ -229,15 +235,14 @@ class ToDo extends React.Component {
 
           <div>
             <div>
-              <Form inline onSubmit={this.handleSubmit}>
-                <Grid
-                  container
-                  direction="column"
-                  justify="space-around"
-                  alignItems="center"
-                >
-                  <Typography
-                    variant="h4"
+            <Accordion>
+                      <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                      >
+                       <Typography
+                    variant="h5"
                     gutterBottom
                     color="primary"
                     style={{
@@ -248,6 +253,15 @@ class ToDo extends React.Component {
                   >
                     Create a ToDo
                   </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+              <Form inline onSubmit={this.handleSubmit}>
+                <Grid
+                  container
+                  direction="column"
+                  justify="space-around"
+                  alignItems="center"
+                >
                   <Grid container direction="row" justify="space-between">
                     <Form.Control type="hidden" ref="uid" />
                     <Typography gutterBottom>
@@ -274,6 +288,8 @@ class ToDo extends React.Component {
                   <Dictaphone passChildData={this.setChildData} />
                 </Grid>
               </Form>
+              </AccordionDetails>
+              </Accordion>
             </div>
           </div>
         </Grid>

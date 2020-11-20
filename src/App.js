@@ -2,7 +2,7 @@
 import React from "react";
 import { signInWithGoogle, signInWithFacebook } from "./firebase";
 import { auth } from "./firebase";
-import { Grid, Button, Paper, Typography, Divider,Accordion,AccordionSummary,AccordionDetails } from "@material-ui/core";
+import { Grid, Button, Paper, Typography, Divider,Accordion,AccordionSummary,AccordionDetails,Container } from "@material-ui/core";
 import AddGoal from "./components/Addgoal";
 // import NavBar from "./components/Navbar"
 import FacebookIcon from "@material-ui/icons/Facebook";
@@ -20,6 +20,7 @@ import { Tabs, Tab } from "react-bootstrap";
 import ToDo from "./components/Todo";
 import StickyFooter from "./components/Footer";
 import UserDetail from "./components/UserDetails";
+import Example from "./components/PieChart"
 
 // import { Add } from '@material-ui/icons';
 // import UserDetail from './components/UserDetails';
@@ -81,6 +82,7 @@ class App extends React.Component {
                 </Navbar.Collapse>
               </Navbar>
 
+
               <Grid
                 container
                 direction="column"
@@ -90,9 +92,14 @@ class App extends React.Component {
                   background:
                     "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
                 }}
+
+
               >
-                {/* <Slide /> */}
+                <Slide/>
+          <Example/>
+
                 {/* <speech></speech> */}
+
 
                 <Tabs id="controlled-tab-example" style={{ marginTop: "2%" }}>
                   <Tab eventKey="goals" title="Goals">
