@@ -21,6 +21,7 @@ import ToDo from "./components/Todo";
 import StickyFooter from "./components/Footer";
 import UserDetail from "./components/UserDetails";
 import Example from "./components/PieChart"
+import MyCarousel from "./components/Reactcard"
 
 // import { Add } from '@material-ui/icons';
 // import UserDetail from './components/UserDetails';
@@ -42,6 +43,24 @@ class App extends React.Component {
     });
   }
 
+  sendemail(){
+
+    window.Email.send({
+      Host : "smtp.elasticemail.com",
+      Username : "utk61198@gmail.com",
+      Password : "3D645EE1E58C08227E211DB0BA725BC8B266",
+      To : 'utk61198@gmail.com',
+      From : "utk61198@gmail.com",
+      Subject : "testing smtpJs server",
+      Body : "mast chal raha hain"
+  }).then(
+    message => alert(message)
+  );
+
+
+
+  }
+
   componentWillUnmount() {
     this.unsubscribeFromAuth();
   }
@@ -56,11 +75,14 @@ class App extends React.Component {
               href="https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap"
               rel="stylesheet"
             />
+                      <script src="https://smtpjs.com/v3/smtp.js">
+</script>
           </Helmet>
           {this.state.currentUser ? (
             <div
               style={{
-                background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+                // background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+                
 
                 height: "100vh",
               }}
@@ -70,7 +92,7 @@ class App extends React.Component {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                   <Nav className="ml-auto">
-                    <Nav.Link href="#features">Dashboard</Nav.Link>
+                 
                     <Button
                       variant="contained"
                       color="secondary"
@@ -82,6 +104,11 @@ class App extends React.Component {
                 </Navbar.Collapse>
               </Navbar>
 
+              {/* <Button onClick={this.sendemail}>Send Email</Button> */}
+
+
+
+
 
               <Grid
                 container
@@ -89,20 +116,20 @@ class App extends React.Component {
                 justify="space-evenly"
                 alignItems="center"
                 style={{
-                  background:
-                    "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+                  // background:
+                  //   "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
                 }}
 
 
               >
-                <Slide/>
-          <Example/>
+                {/* <Slide/> */}
+                <MyCarousel/>
 
-                {/* <speech></speech> */}
+
 
 
                 <Tabs id="controlled-tab-example" style={{ marginTop: "2%" }}>
-                  <Tab eventKey="goals" title="Goals">
+                  <Tab eventKey="goals" title="My Goals">
                    
                     <AddGoal user={this.state.currentUser} />
                   </Tab>
@@ -113,6 +140,7 @@ class App extends React.Component {
                     <UserDetail user={this.state.currentUser} />
                   </Tab>
                 </Tabs>
+
               </Grid>
             </div>
           ) : (

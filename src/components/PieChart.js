@@ -14,13 +14,21 @@ const COLORS = ['red', 'green', 'blue', 'yellow'];
 
 export default class Example extends PureComponent {
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/3Leoa7f4/';
+  constructor(props)
+  {
+    super(props);
+  }
 
   render() {
     return (
-        <Paper elevation={10} style={{backgroundColor:"whitesmoke"}}> 
+        <Paper elevation={10} style={{backgroundColor:"white",marginBottom:"5%"}}> 
             <PieChart width={300} height={300} onMouseEnter={this.onPieEnter}>
         <Pie
-          data={data}
+          data={ [
+            { name: 'Unfinished Goals', value:this.props.fin },
+            { name: 'Finished goals', value:this.props.unfin },
+            
+          ]}
           cx={150}
           cy={150}
           innerRadius={55}

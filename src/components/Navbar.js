@@ -9,10 +9,7 @@ export default function NavBar() {
       <Navbar.Brand href="#home">Goal Tracker</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Link href="#features">Dashboard</Nav.Link>
-        </Nav>
-        <Button color="secondary" onClick={() => auth.signOut()}></Button>
+    <Button color="secondary" onClick={() => auth.signOut()}></Button>
       </Navbar.Collapse>
     </Navbar>
   );

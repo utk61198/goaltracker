@@ -21,12 +21,11 @@ Accordion,
 import Form from "react-bootstrap/Form";
 import "bootstrap/dist/css/bootstrap.min.css";
 import EditIcon from "@material-ui/icons/Edit";
-import DoneOutlineIcon from "@material-ui/icons/DoneOutline";
-import DoneIcon from "@material-ui/icons/Done";
 import DoneAllIcon from "@material-ui/icons/DoneAll";
 import goalimg from "../carouselimages/goal2.jpg";
 import Helmet from "react-helmet";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Example from "../components/PieChart"
 
 import Chip from "@material-ui/core/Chip";
 
@@ -54,6 +53,24 @@ class AddGoal extends React.Component {
     db.ref("/" + this.props.user.uid).set(this.state);
     console.log("DATA SAVED");
   };
+
+  sendemail=(gname,gdesc)=>{
+
+
+    window.Email.send({
+      Host : "smtp.elasticemail.com",
+      Username : "utk61198@gmail.com",
+      Password : "3D645EE1E58C08227E211DB0BA725BC8B266",
+      To :this.props.user.email,
+      From : "utk61198@gmail.com",
+      Subject:"New Goal Added: "+gname,
+      Body : gdesc
+  }).then(
+    message => alert(message)
+  );
+
+
+  }
 
   getUserData = () => {
     let ref = db.ref("/" + this.props.user.uid);
@@ -113,6 +130,8 @@ class AddGoal extends React.Component {
         sa,
         su,
       });
+      this.sendemail(gname,gdesc);
+      console.log(this.props.user.email)
       this.setState({ goals });
     }
 
@@ -161,6 +180,8 @@ class AddGoal extends React.Component {
 
   render() {
     const { goals } = this.state;
+    const { finished } = this.state;
+
     return (
       <React.Fragment>
         <Helmet>
@@ -169,32 +190,44 @@ class AddGoal extends React.Component {
             href="https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap"
             rel="stylesheet"
           />
+
         </Helmet>
         <Grid
           container
           direction="row"
-          justify="space-evenly"
-          alignItems="baseline"
+          justify="space-around"
+          alignItems="flex-start"
           style={{
-            background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
-            borderRadius: "5vh",
+            // background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+            backgroundColor:"white",
+            marginTop:"5%"
           }}
         >
+          <div>
+          <Example fin={goals.length} unfin={finished.length}/>
+
+          </div>
+
           {goals.length > 0 && (
             <div>
+              {/* <Paper elevation={20}>
               <Typography
-                gutterBottom
-                variant="h4"
-                color="primary"
-                align="left"
-                style={{
-                  fontFamily: "Sansita Swashed",
-                  marginBottom: "2%",
-                  marginLeft: "10%",
-                }}
-              >
-                My Goals
-              </Typography>
+                  gutterBottom
+                  variant="h4"
+                  color="primary"
+                  align="left"
+                  style={{
+                    fontFamily: "Sansita Swashed",
+                    marginBottom: "2%",
+                    marginLeft: "10%",
+                    backgroundColor:"white"
+                  }}
+                >
+                  My Goals
+                </Typography>
+              </Paper> */}
+            
+            
 
               {goals.map((goal) => (
                 <div key={goal.uid}>
@@ -207,7 +240,8 @@ class AddGoal extends React.Component {
                       marginLeft: "10%",
                       marginRight: "10%",
                     }}
-                  >
+                  >      
+                
                     <CardActionArea style={{ color: "black" }}>
                       <Grid>
                         <CardMedia
@@ -314,7 +348,10 @@ class AddGoal extends React.Component {
 
           <div>
             <div>
-            <Accordion>
+            <Accordion elevation={20} style={{
+              marginLeft:"2%",
+             
+            }}>
                       <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}
                         aria-controls="panel1a-content"

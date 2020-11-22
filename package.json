@@ -18,6 +18,8 @@
     "bootstrap": "^4.5.3",
     "firebase": "^8.0.0",
     "framer-motion": "^2.9.4",
+    "node-cron": "^2.0.3",
+    "nodemailer": "^6.4.16",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
     "react-card-carousel": "^1.1.3",
