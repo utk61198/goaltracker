@@ -1,0 +1,204 @@
+import React from "react";
+
+import Firebase from "firebase";
+import { auth, db } from "../firebase";
+import {
+  Grid,
+  TextField,
+  Button,
+  Typography,
+  Checkbox,
+  Paper,
+  CardActions,
+  CardMedia,
+  Card,
+  CardActionArea,
+  CardContent,
+Accordion,
+  AccordionSummary,
+  AccordionDetails
+} from "@material-ui/core";
+import Form from "react-bootstrap/Form";
+import "bootstrap/dist/css/bootstrap.min.css";
+import EditIcon from "@material-ui/icons/Edit";
+import DoneAllIcon from "@material-ui/icons/DoneAll";
+import goalimg from "../carouselimages/goal2.jpg";
+import Helmet from "react-helmet";
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Example from "../components/PieChart"
+
+import Chip from "@material-ui/core/Chip";
+
+class Upcoming extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      goals: [],
+      finished:[],
+    };
+  }
+
+  componentDidMount() {
+    this.getUserData();
+  }
+
+
+
+
+
+  getUserData = () => {
+    let ref = db.ref("/" + this.props.user.uid);
+    ref.on("value", (snapshot) => {
+      const state = snapshot.val();
+      this.setState(state);
+    });
+  };
+
+
+
+  render() {
+    const { goals } = this.state;
+    const { finished } = this.state;
+    let current = new Date().toJSON().slice(0,10).replace(/-/g,'-');
+    let tomorrow = new Date(current)
+tomorrow.setDate(tomorrow.getDate() + 1)
+tomorrow=tomorrow.toJSON().slice(0,10).replace(/-/g,'-');
+
+
+
+
+    const newState = goals.filter((data) => {
+        return data.gdate >= tomorrow;
+      });
+    
+
+    
+
+    return (
+      <React.Fragment>
+        <Helmet>
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap"
+            rel="stylesheet"
+          />
+
+        </Helmet>
+        <Grid
+          container
+          direction="row"
+          justify="space-around"
+          alignItems="flex-start"
+          style={{
+            // background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+            backgroundColor:"white",
+            marginTop:"5%"
+          }}
+        >
+        
+
+          {goals.length > 0 && (
+            <div>
+              {/* <Paper elevation={20}>
+              <Typography
+                  gutterBottom
+                  variant="h4"
+                  color="primary"
+                  align="left"
+                  style={{
+                    fontFamily: "Sansita Swashed",
+                    marginBottom: "2%",
+                    marginLeft: "10%",
+                    backgroundColor:"white"
+                  }}
+                >
+                  My Goals
+                </Typography>
+              </Paper> */}
+            
+            
+
+              {newState.map((goal) => (
+                <div key={goal.uid}>
+                  <Paper
+                  elevation={20}
+                    style={{
+                      display: "flex",
+                      marginBottom: "5%",
+                      justifyContent: "center",
+                      marginLeft: "10%",
+                      marginRight: "10%",
+                    }}
+                  >      
+                
+                    <CardActionArea style={{ color: "black" }}>
+                      <Grid>
+                        <CardMedia
+                          component="img"
+                          alt="Contemplative Reptile"
+                          height="150"
+                          image={goalimg}
+                        />
+                        <CardContent>
+                          <div>
+                            <Typography
+                              gutterBottom
+                              variant="h5"
+                              component="h2"
+                            >
+                              {goal.gname}
+                            </Typography>
+                            <Typography
+                              variant="body1"
+                              color="textSecondary"
+                              component="p"
+                              gutterBottom
+                            >
+                              <Form.Control
+                                as="textarea"
+                                disabled={true}
+                                value={goal.gdesc}
+                              ></Form.Control>
+                            </Typography>
+                            <Grid
+                            container
+                            direction="row"
+                            justify="flex-start"
+                            alignItem="flex-start">
+
+                            {<Chip color={goal.mo=="Yes"?"primary":"" } size="small" label="Mo"></Chip>}
+                            { <Chip color={goal.tu=="Yes"?"primary":"" } size="small" label="Tu"></Chip>}
+                            {<Chip color={goal.we=="Yes"?"primary":"" } size="small" label="We"></Chip>}
+                            {<Chip color={goal.th=="Yes"?"primary":"" } size="small" label="Th"></Chip>}
+                            {<Chip color={goal.fr=="Yes"?"primary":"" } size="small" label="Fr"></Chip>}
+                            {<Chip color={goal.sa=="Yes"?"primary":"" } size="small" label="Sa"></Chip>}
+                            {<Chip color={goal.su=="Yes"?"primary":"" } size="small" label="Su"></Chip>}
+
+                            
+                            </Grid>
+                          </div>
+
+                          {/* <Typography variant="body2" color="secondary" component="p" align="right" >
+                      Goal Deadline: {goal.gdate}
+                    </Typography> */}
+                        </CardContent>
+                      </Grid>
+                    </CardActionArea>
+                   
+                  </Paper>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <div>
+            
+          </div>
+        </Grid>
+      </React.Fragment>
+    );
+  }
+}
+
+export default Upcoming;

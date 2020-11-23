@@ -22,6 +22,7 @@ import StickyFooter from "./components/Footer";
 import UserDetail from "./components/UserDetails";
 import Example from "./components/PieChart"
 import MyCarousel from "./components/Reactcard"
+import Upcoming from "./components/Upcoming"
 
 // import { Add } from '@material-ui/icons';
 // import UserDetail from './components/UserDetails';
@@ -133,12 +134,17 @@ class App extends React.Component {
                    
                     <AddGoal user={this.state.currentUser} />
                   </Tab>
+                  <Tab eventKey="upcoming" title="Upcoming">
+                    <Upcoming user={this.state.currentUser} />
+                  </Tab>
                   <Tab eventKey="todo" title="To do">
+                  
                     <ToDo user={this.state.currentUser} />
                   </Tab>
                   <Tab eventKey="deatils" title="My Account">
                     <UserDetail user={this.state.currentUser} />
                   </Tab>
+                 
                 </Tabs>
 
               </Grid>

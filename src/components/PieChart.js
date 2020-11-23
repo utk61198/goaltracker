@@ -23,7 +23,7 @@ export default class Example extends PureComponent {
     return (
         <Paper elevation={10} style={{backgroundColor:"white",marginBottom:"5%"}}> 
             <PieChart width={300} height={300} onMouseEnter={this.onPieEnter}>
-        <Pie
+       {(this.props.fin>0 || this.props.unfin>0) &&  <Pie
           data={ [
             { name: 'Unfinished Goals', value:this.props.fin },
             { name: 'Finished goals', value:this.props.unfin },
@@ -40,7 +40,7 @@ export default class Example extends PureComponent {
           {
             data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
           }
-        </Pie>
+        </Pie>}
         <Tooltip />
         <Legend/>
 

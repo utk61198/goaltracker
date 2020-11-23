@@ -113,7 +113,7 @@ class AddGoal extends React.Component {
       goals[devIndex].su = su;
 
       this.setState({ goals });
-    } else if (gname && gdesc && gdate) {
+    } else if (gname) {
       const uid = new Date().getTime().toString();
       const { goals } = this.state;
       goals.unshift({
