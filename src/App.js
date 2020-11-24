@@ -80,6 +80,8 @@ class App extends React.Component {
               href="https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap"
               rel="stylesheet"
             />
+<link rel="preconnect" href="https://fonts.gstatic.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@500&family=Carter+One&display=swap" rel="stylesheet"></link>
                       <script src="https://smtpjs.com/v3/smtp.js">
                  </script>
           </Helmet>
@@ -135,29 +137,34 @@ background: "linear-gradient(to right, #414345, #232526)", /* W3C, IE 10+/ Edge,
 
               >
                 {/* <Slide/> */}
-                <MyCarousel/>
 
 
-
-
-                <Tabs id="controlled-tab-example" style={{ marginTop: "2%",backgroundColor:"lightgray",borderRadius:"20px",padding:"10px" }}>
-
-                  <Tab eventKey="goals" title={ <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }}><Typography variant="h6" style={{color:"black	"}}>Goals</Typography></motion.div>}>
-                  <Typography
+                <Typography
                 variant="h3"
                 component="h5"
                 gutterBottom
-                style={{marginTop:"3%",color:"white"}}
+                style={{marginTop:"3%",color:"white",fontFamily:'Carter One'}}
                 align="center"
               >
-                <Typist>
+                <Typist cursor="show:false">
                   
-                  Welcome, add some new goals
+                  Welcome, add some new goals!! 
 
 
                 
       </Typist>
       </Typography>
+
+
+                <MyCarousel/>
+
+
+
+
+                <Tabs id="controlled-tab-example" style={{ marginTop: "2%",backgroundColor:"lightgray",borderRadius:"10px",padding:"5px" }}>
+
+                  <Tab eventKey="goals" title={ <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }}><Typography variant="h6" style={{color:"black	"}}>Goals</Typography></motion.div>}>
+                 
                  
                    
                     <AddGoal user={this.state.currentUser} />

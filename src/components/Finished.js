@@ -164,7 +164,7 @@ tomorrow=tomorrow.toJSON().slice(0,10).replace(/-/g,'-');
                               direction="column"
                               justify="space-evenly">
                               {goal.gname}
-                                <Chip size="small" color="primary" label={goal.gdate}></Chip>
+                                <Chip color="primary" label={goal.gdate}></Chip>
 
                               </Grid>
                            

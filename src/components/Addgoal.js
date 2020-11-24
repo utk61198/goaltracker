@@ -303,6 +303,12 @@ class AddGoal extends React.Component {
                                 value={goal.gdesc}
                               ></Form.Control>
                             </Typography>
+                            <Typography gutterBottom>
+                            {<Chip color="primary" size="small" label={goal.often}></Chip>}
+
+
+                            </Typography>
+
                             <Grid
                             container
                             direction="row"
@@ -450,7 +456,7 @@ class AddGoal extends React.Component {
                       ref="type"
                       style={{ marginBottom: "4%", marginLeft: "3%" }}
                     >
-                                           <option>Personal</option>
+                     <option>Personal</option>
 
                       <option>Professional</option>
                     </Form.Control>
@@ -481,7 +487,7 @@ class AddGoal extends React.Component {
                     color="primary"
                     style={{ fontFamily: "Sansita Swashed" }}
                   >
-                    Or customize
+                  Customize
                   </Typography>
                   <Grid>
                     <Form.Control
