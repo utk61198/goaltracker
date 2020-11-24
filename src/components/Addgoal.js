@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 import Firebase from "firebase";
 import { auth, db } from "../firebase";
@@ -65,9 +66,7 @@ class AddGoal extends React.Component {
       From : "utk61198@gmail.com",
       Subject:"New Goal Added: "+gname,
       Body : gdesc
-  }).then(
-    message => alert(message)
-  );
+  })
 
 
   }
@@ -94,6 +93,7 @@ class AddGoal extends React.Component {
     let fr = this.refs.fr.value;
     let sa = this.refs.sa.value;
     let su = this.refs.su.value;
+    let type=this.refs.type.value
 
     if (uid && gname && gdesc && gdate) {
       const { goals } = this.state;
@@ -111,9 +111,10 @@ class AddGoal extends React.Component {
       goals[devIndex].fr = fr;
       goals[devIndex].sa = sa;
       goals[devIndex].su = su;
+      goals[devIndex].type=type
 
       this.setState({ goals });
-    } else if (gname) {
+    } else if (gname && gdate && gdate) {
       const uid = new Date().getTime().toString();
       const { goals } = this.state;
       goals.unshift({
@@ -129,6 +130,7 @@ class AddGoal extends React.Component {
         fr,
         sa,
         su,
+        type
       });
       this.sendemail(gname,gdesc);
       console.log(this.props.user.email)
@@ -147,6 +149,9 @@ class AddGoal extends React.Component {
     this.refs.fr.value = "Fri";
     this.refs.sa.value = "Sat";
     this.refs.su.value = "Sun";
+    this.refs.type.value="Personal";
+
+
   };
 
   removeData = (goal) => {
@@ -176,6 +181,7 @@ class AddGoal extends React.Component {
     this.refs.fr.value = goal.fr;
     this.refs.sa.value = goal.sa;
     this.refs.su.value = goal.su;
+    this.refs.type.value=goal.type;
   };
 
   render() {
@@ -209,7 +215,11 @@ class AddGoal extends React.Component {
           </div>
 
           {goals.length > 0 && (
-            <div>
+            <div style={{
+
+              overflowY:"scroll",
+              height:"60vh"
+            }}>
               {/* <Paper elevation={20}>
               <Typography
                   gutterBottom
@@ -230,7 +240,8 @@ class AddGoal extends React.Component {
             
 
               {goals.map((goal) => (
-                <div key={goal.uid}>
+                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }}>
+                <div key={goal.uid} style={{marginTop:"1%"}}>
                   <Paper
                   elevation={20}
                     style={{
@@ -244,6 +255,7 @@ class AddGoal extends React.Component {
                 
                     <CardActionArea style={{ color: "black" }}>
                       <Grid>
+                     
                         <CardMedia
                           component="img"
                           alt="Contemplative Reptile"
@@ -295,13 +307,19 @@ class AddGoal extends React.Component {
                         </CardContent>
                       </Grid>
                     </CardActionArea>
-                    <CardActions>
+                    <CardActions style={{backgroundColor:"#d3d3d3"}}>
                       <Grid
                         container
                         direction="column"
                         justify="space-evenly"
                         alignItems="flex-start"
                       >
+                        <Typography gutterBottom>
+                        <Chip color="primary" label={goal.type} style={{marginBottom:"20%"}}></Chip>
+
+                        </Typography>
+                     
+
                         <Typography gutterBottom>
                           <Button
                             variant="contained"
@@ -336,12 +354,13 @@ class AddGoal extends React.Component {
                           component="p"
                           align="left"
                         >
-                          {goal.gdate}
+                         <Chip   color="secondary" label={goal.gdate} style={{marginBottom:"20%"}}></Chip>
                         </Typography>
                       </Grid>
                     </CardActions>
                   </Paper>
                 </div>
+                </motion.div>
               ))}
             </div>
           )}
@@ -405,6 +424,19 @@ class AddGoal extends React.Component {
                       style={{ width: "221px" }}
                     />
                   </Typography>
+                  <Typography gutterBottom>
+                  <Form.Control
+                      as="select"
+                      ref="type"
+                      style={{ marginBottom: "4%", marginLeft: "3%" }}
+                    >
+                                           <option>Personal</option>
+
+                      <option>Professional</option>
+                    </Form.Control>
+
+                  </Typography>
+                  
                   {/* <Form.Control type="checkbox" ref="daily"></Form.Control> */}
                   <Typography
                     variant="h5"

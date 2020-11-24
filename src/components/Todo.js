@@ -32,6 +32,8 @@ import Dictaphone from "./Speechrecognition";
 import AddCircleRoundedIcon from "@material-ui/icons/AddCircleRounded";
 import AddIcon from "@material-ui/icons/Add";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { motion } from "framer-motion";
+
 
 class ToDo extends React.Component {
   constructor(props) {
@@ -120,15 +122,17 @@ class ToDo extends React.Component {
         <Grid
           container
           direction="row"
-          justify="space-evenly"
+          justify="space-around"
           alignItems="baseline"
           style={{
             // background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
             borderRadius: "2vh",
+            marginTop:"3%"
           }}
         >
           {goals.length > 0 && (
-            <div>
+            <div style={{overflowY:"scroll",height:"50vh",width:"50"}}>
+
               <Typography
                 gutterBottom
                 variant="h4"
@@ -147,6 +151,7 @@ class ToDo extends React.Component {
 
               {goals.map((goal) => (
                 <div key={goal.uid}>
+                  <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }}>
                   <Paper
                   elevation={20}
                     style={{
@@ -155,19 +160,13 @@ class ToDo extends React.Component {
                       justifyContent: "center",
                       marginLeft: "10%",
                       marginRight: "10%",
+                      borderRadius:'20px'
                     }}
                   >
-                    <CardActionArea style={{ color: "black" }}>
+                    <CardActionArea style={{ color: "black",backgroundColor:"#ffffa1"}}>
                       <Grid>
-                        {/* <CardMedia
-                      component="img"
-                      alt="Contemplative Reptile"
-                      height="150"
-                      image={goalimg}
-
-
-                    /> */}
-                        <CardContent>
+                   
+                        <CardContent style={{backgroundColor:"#ffffa1"}}>
                           <div>
                             <Typography
                               gutterBottom
@@ -177,6 +176,7 @@ class ToDo extends React.Component {
                               <Form.Control
                                 as="textarea"
                                 disabled={true}
+                                
                                 value={goal.gname}
                               ></Form.Control>
                             </Typography>
@@ -188,7 +188,7 @@ class ToDo extends React.Component {
                         </CardContent>
                       </Grid>
                     </CardActionArea>
-                    <CardActions>
+                    <CardActions style={{backgroundColor:"#ffffa1"}}>
                       <Grid
                         container
                         direction="column"
@@ -228,6 +228,7 @@ class ToDo extends React.Component {
                       </Grid>
                     </CardActions>
                   </Paper>
+                  </motion.div>
                 </div>
               ))}
             </div>

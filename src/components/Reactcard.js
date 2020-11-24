@@ -34,7 +34,7 @@ class MyCarousel extends Component {
   static get CARD_STYLE() {
     return {
       height: "40vh",
-      width: "1005",
+      width: "100%",
     //   paddingTop: "80px",
       textAlign: "center",
       background: "#52C0F5",

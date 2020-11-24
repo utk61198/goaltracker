@@ -1,5 +1,7 @@
 import { Paper } from '@material-ui/core';
 import React, { PureComponent } from 'react';
+import Typist from 'react-typist';
+
 import {
   PieChart, Pie, Sector, Cell,Tooltip,Legend
 } from 'recharts';
@@ -39,6 +41,24 @@ export default class Example extends PureComponent {
         >
           {
             data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
+          }
+        </Pie>}
+        {(this.props.fin==0 && this.props.unfin==0) &&  <Pie
+          data={ [
+            { name: 'No Goals Added', value:1 },
+            
+            
+          ]}
+          cx={150}
+          cy={150}
+          innerRadius={55}
+          outerRadius={80}
+          fill="#8884d8"
+          paddingAngle={5}
+          dataKey="value"
+        >
+          {
+            data.map((entry, index) => <Cell key={`cell-${index}`} fill={"#adbce6"} />)
           }
         </Pie>}
         <Tooltip />

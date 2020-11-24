@@ -15,7 +15,7 @@ import { FcGoogle } from "react-icons/fc";
 import Slide from "./components/Caraousel";
 import List from "./components/GoalList";
 import { motion } from "framer-motion";
-import logo from "./carouselimages/logo192.png";
+import logo from "./carouselimages/logofinal.png";
 import { Tabs, Tab } from "react-bootstrap";
 import ToDo from "./components/Todo";
 import StickyFooter from "./components/Footer";
@@ -23,6 +23,8 @@ import UserDetail from "./components/UserDetails";
 import Example from "./components/PieChart"
 import MyCarousel from "./components/Reactcard"
 import Upcoming from "./components/Upcoming"
+import Finished from "./components/Finished"
+
 
 // import { Add } from '@material-ui/icons';
 // import UserDetail from './components/UserDetails';
@@ -130,12 +132,17 @@ class App extends React.Component {
 
 
                 <Tabs id="controlled-tab-example" style={{ marginTop: "2%" }}>
+
                   <Tab eventKey="goals" title="My Goals">
                    
                     <AddGoal user={this.state.currentUser} />
                   </Tab>
                   <Tab eventKey="upcoming" title="Upcoming">
                     <Upcoming user={this.state.currentUser} />
+                  </Tab>
+                  <Tab eventKey="finished" title="Finished">
+                   
+                    <Finished user={this.state.currentUser} />
                   </Tab>
                   <Tab eventKey="todo" title="To do">
                   
@@ -172,7 +179,7 @@ class App extends React.Component {
                 }}
               >
                 <Typography gutterBottom>
-                  <img src={logo} />
+                  <img src={logo} style={{height:"30vh"}} />
                 </Typography>
               </motion.div>
 
@@ -181,6 +188,7 @@ class App extends React.Component {
                 component="h2"
                 gutterBottom
                 color="primary"
+                style={{marginTop:"5%"}}
               >
                 Goal Tracker
               </Typography>

@@ -71,7 +71,10 @@ tomorrow=tomorrow.toJSON().slice(0,10).replace(/-/g,'-');
 
 
 
-   
+    const newState = goals.filter((data) => {
+        return data.gdate >= tomorrow;
+      });
+    
 
     
 
@@ -99,7 +102,7 @@ tomorrow=tomorrow.toJSON().slice(0,10).replace(/-/g,'-');
           {/* <button onClick={()=>window.location.reload(false)}>Refresh</button> */}
         
 
-          {goals.length > 0 && (
+          {finished.length > 0 && (
             <div style={{overflowY:"scroll",height:"50vh"}}>
               {/* <Paper elevation={20}>
               <Typography
@@ -120,9 +123,7 @@ tomorrow=tomorrow.toJSON().slice(0,10).replace(/-/g,'-');
             
             
 
-              {goals.filter((data) => {
-        return data.gdate >= tomorrow;
-      }).map((goal) => (
+              {finished.map((goal) => (
                 <div key={goal.uid} style={{marginTop:"3%"}}>
                   <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }}>
                   <Paper
@@ -137,7 +138,7 @@ tomorrow=tomorrow.toJSON().slice(0,10).replace(/-/g,'-');
                     }}
                   >      
                 
-                    <CardActionArea style={{ backgroundColor: "#ffc6c4",color:"white" ,borderRadius:"20px"}}>
+                    <CardActionArea style={{ backgroundColor: "#90ee90",color:"white" ,borderRadius:"20px"}}>
                       <Grid
                       container
                       direction="row">
@@ -157,7 +158,7 @@ tomorrow=tomorrow.toJSON().slice(0,10).replace(/-/g,'-');
                               direction="column"
                               justify="space-evenly">
                               {goal.gname}
-                                <Chip size="small" color="secondary" label={goal.gdate}></Chip>
+                                <Chip size="small" color="primary" label={goal.gdate}></Chip>
 
                               </Grid>
                            
