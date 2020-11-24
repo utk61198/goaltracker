@@ -28,6 +28,7 @@ import Helmet from "react-helmet";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Example from "../components/PieChart"
 
+
 import Chip from "@material-ui/core/Chip";
 
 class AddGoal extends React.Component {
@@ -161,6 +162,19 @@ class AddGoal extends React.Component {
       return data.uid !== goal.uid;
     });
     finished.unshift(goal)
+    this.refs.gname.value = "";
+    this.refs.gdesc.value = "";
+    this.refs.uid.value = "";
+    this.refs.gdate.value = "";
+    this.refs.often.value = "";
+    this.refs.mo.value = "Mon";
+    this.refs.tu.value = "Tue";
+    this.refs.we.value = "Wed";
+    this.refs.th.value = "Thu";
+    this.refs.fr.value = "Fri";
+    this.refs.sa.value = "Sat";
+    this.refs.su.value = "Sun";
+    this.refs.type.value="Personal";
 
     this.setState({ goals: newState,
     finished

@@ -67,6 +67,9 @@ class Upcoming extends React.Component {
     let tomorrow = new Date(current)
 tomorrow.setDate(tomorrow.getDate() + 1)
 tomorrow=tomorrow.toJSON().slice(0,10).replace(/-/g,'-');
+let newstate=goals.filter((data) => {
+  return data.gdate >= tomorrow;
+})
 
 
 
@@ -98,8 +101,11 @@ tomorrow=tomorrow.toJSON().slice(0,10).replace(/-/g,'-');
         >
           {/* <button onClick={()=>window.location.reload(false)}>Refresh</button> */}
         
+          {newstate.length==0 && <Typography variant="subtitle" style={{fontFamily:"Sansita Swashed"}}>
+          <Chip variant="outlined" color="primary" label=" You have no upcoming goals in 24 hours" />
 
-          {goals.length > 0 && (
+           </Typography>}
+          {newstate.length > 0 && (
             <div style={{overflowY:"scroll",height:"50vh"}}>
               {/* <Paper elevation={20}>
               <Typography
@@ -120,9 +126,7 @@ tomorrow=tomorrow.toJSON().slice(0,10).replace(/-/g,'-');
             
             
 
-              {goals.filter((data) => {
-        return data.gdate >= tomorrow;
-      }).map((goal) => (
+              {newstate.map((goal) => (
                 <div key={goal.uid} style={{marginTop:"3%"}}>
                   <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }}>
                   <Paper

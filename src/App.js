@@ -79,7 +79,7 @@ class App extends React.Component {
               rel="stylesheet"
             />
                       <script src="https://smtpjs.com/v3/smtp.js">
-</script>
+                 </script>
           </Helmet>
           {this.state.currentUser ? (
             <div
@@ -154,7 +154,10 @@ class App extends React.Component {
                  
                 </Tabs>
 
+
               </Grid>
+              <StickyFooter/>
+
             </div>
           ) : (
             <Grid
@@ -226,6 +229,7 @@ class App extends React.Component {
             </Grid>
           )}
         </div>
+
       </div>
     );
   }

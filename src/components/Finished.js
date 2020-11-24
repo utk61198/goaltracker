@@ -100,6 +100,11 @@ tomorrow=tomorrow.toJSON().slice(0,10).replace(/-/g,'-');
           }}
         >
           {/* <button onClick={()=>window.location.reload(false)}>Refresh</button> */}
+
+          {finished.length==0 && <Typography variant="subtitle" style={{fontFamily:"Sansita Swashed"}}>
+          <Chip variant="outlined" color="primary" label="You haven't finished any goal" />
+
+           </Typography>}
         
 
           {finished.length > 0 && (
