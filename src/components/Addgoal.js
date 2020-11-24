@@ -204,6 +204,7 @@ class AddGoal extends React.Component {
 
     return (
       <React.Fragment>
+        <div>
         <Helmet>
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
@@ -215,12 +216,17 @@ class AddGoal extends React.Component {
         <Grid
           container
           direction="row"
-          justify="space-around"
+          justify="space-evenly"
           alignItems="flex-start"
           style={{
-            // background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+           
             backgroundColor:"white",
-            marginTop:"5%"
+            // background:"#D3CCE3|",
+            // background: "-webkit-linear-gradient(to right, #E9E4F0, #D3CCE3)", /* Chrome 10-25, Safari 5.1-6 */
+            // background: "linear-gradient(to right, #E9E4F0, #D3CCE3)", /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            marginTop:"5%",
+            padding:"20px",
+            borderRadius:"20px"
           }}
         >
           <div>
@@ -572,6 +578,7 @@ class AddGoal extends React.Component {
             </div>
           </div>
         </Grid>
+        </div>
       </React.Fragment>
     );
   }

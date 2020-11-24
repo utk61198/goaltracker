@@ -23,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
      minHeight: '40vh',
+     background:"#232526",  /* fallback for old browsers */
+background: "-webkit-linear-gradient(to right, #414345, #232526)",  /* Chrome 10-25, Safari 5.1-6 */
+background: "linear-gradient(to right, #414345, #232526)", 
   },
   main: {
     marginTop: theme.spacing(8),

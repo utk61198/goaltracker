@@ -126,8 +126,10 @@ class ToDo extends React.Component {
           alignItems="baseline"
           style={{
             // background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+            backgroundColor:"white",
             borderRadius: "2vh",
-            marginTop:"3%"
+            marginTop:"3%",
+            padding:"20px"
           }}
         >
           {goals.length > 0 && (

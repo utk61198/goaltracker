@@ -2,7 +2,7 @@
 import React from "react";
 import { signInWithGoogle, signInWithFacebook } from "./firebase";
 import { auth } from "./firebase";
-import { Grid, Button, Paper, Typography, Divider,Accordion,AccordionSummary,AccordionDetails,Container } from "@material-ui/core";
+import { Grid, Button, Paper, Typography, Divider,Accordion,AccordionSummary,AccordionDetails,Container ,Chip} from "@material-ui/core";
 import AddGoal from "./components/Addgoal";
 // import NavBar from "./components/Navbar"
 import FacebookIcon from "@material-ui/icons/Facebook";
@@ -10,6 +10,8 @@ import Helmet from "react-helmet";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Typist from 'react-typist';
+
 
 import { FcGoogle } from "react-icons/fc";
 import Slide from "./components/Caraousel";
@@ -119,8 +121,15 @@ class App extends React.Component {
                 justify="space-evenly"
                 alignItems="center"
                 style={{
-                  // background:
-                  //   "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+
+background:"#232526",  /* fallback for old browsers */
+background: "-webkit-linear-gradient(to right, #414345, #232526)",  /* Chrome 10-25, Safari 5.1-6 */
+background: "linear-gradient(to right, #414345, #232526)", /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+                  
+                  
+
                 }}
 
 
@@ -131,24 +140,41 @@ class App extends React.Component {
 
 
 
-                <Tabs id="controlled-tab-example" style={{ marginTop: "2%" }}>
+                <Tabs id="controlled-tab-example" style={{ marginTop: "2%",backgroundColor:"lightgray",borderRadius:"20px",padding:"10px" }}>
 
-                  <Tab eventKey="goals" title="My Goals">
+                  <Tab eventKey="goals" title={ <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }}><Typography variant="h6" style={{color:"black	"}}>Goals</Typography></motion.div>}>
+                  <Typography
+                variant="h3"
+                component="h5"
+                gutterBottom
+                style={{marginTop:"3%",color:"white"}}
+                align="center"
+              >
+                <Typist>
+                  
+                  Welcome, add some new goals
+
+
+                
+      </Typist>
+      </Typography>
+                 
                    
                     <AddGoal user={this.state.currentUser} />
                   </Tab>
-                  <Tab eventKey="upcoming" title="Upcoming">
+                  <Tab eventKey="upcoming" title={ <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }}><Typography variant="h6" style={{color:"black"}}>Upcoming</Typography></motion.div>}>
+    
                     <Upcoming user={this.state.currentUser} />
                   </Tab>
-                  <Tab eventKey="finished" title="Finished">
+                  <Tab eventKey="finished" title={ <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }}><Typography variant="h6" style={{color:"black"}}>Finished</Typography></motion.div>}>
                    
                     <Finished user={this.state.currentUser} />
                   </Tab>
-                  <Tab eventKey="todo" title="To do">
+                  <Tab eventKey="todo" title={ <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }}><Typography variant="h6" style={{color:"black"}}>To do</Typography></motion.div>}>
                   
                     <ToDo user={this.state.currentUser} />
                   </Tab>
-                  <Tab eventKey="deatils" title="My Account">
+                  <Tab eventKey="deatils"title={ <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }}><Typography variant="h6" style={{color:"black"}}>My Account</Typography></motion.div>}>
                     <UserDetail user={this.state.currentUser} />
                   </Tab>
                  
@@ -193,7 +219,10 @@ class App extends React.Component {
                 color="primary"
                 style={{marginTop:"5%"}}
               >
-                Goal Tracker
+                <Typist>
+        Goal Tracker
+      </Typist>
+
               </Typography>
 
               <Paper elevation={3}>

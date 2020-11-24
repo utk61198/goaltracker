@@ -96,7 +96,8 @@ tomorrow=tomorrow.toJSON().slice(0,10).replace(/-/g,'-');
           style={{
             // background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
             backgroundColor:"white",
-            marginTop:"5%"
+            marginTop:"5%",
+            borderRadius:"15px"
           }}
         >
           {/* <button onClick={()=>window.location.reload(false)}>Refresh</button> */}
@@ -108,7 +109,7 @@ tomorrow=tomorrow.toJSON().slice(0,10).replace(/-/g,'-');
         
 
           {finished.length > 0 && (
-            <div style={{overflowY:"scroll",height:"50vh"}}>
+            <div style={{overflowY:"scroll",height:"60vh",borderRadius:"20px"}}>
               {/* <Paper elevation={20}>
               <Typography
                   gutterBottom
