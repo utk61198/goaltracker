@@ -65,10 +65,15 @@ class Upcoming extends React.Component {
     const { finished } = this.state;
     let current = new Date().toJSON().slice(0,10).replace(/-/g,'-');
     let tomorrow = new Date(current)
+    let dayaftertomorrow=new Date(current)
 tomorrow.setDate(tomorrow.getDate() + 1)
+dayaftertomorrow.setDate(dayaftertomorrow.getDate()+2)
+
 tomorrow=tomorrow.toJSON().slice(0,10).replace(/-/g,'-');
+dayaftertomorrow=dayaftertomorrow.toJSON().slice(0,10).replace(/-/g,'-');
+
 let newstate=goals.filter((data) => {
-  return data.gdate >= tomorrow;
+  return data.gdate >= tomorrow && data.gdate<=dayaftertomorrow;
 })
 
 
