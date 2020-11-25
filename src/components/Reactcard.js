@@ -52,7 +52,7 @@ class MyCarousel extends Component {
   render() {
     return (
       <div style={MyCarousel.CONTAINER_STYLE}>
-        <ReactCardCarousel autoplay={true} autoplay_speed={2000}>
+        <ReactCardCarousel autoplay={true} autoplay_speed={3000}>
           <div style={MyCarousel.CARD_STYLE}><img src={quote1} height="100%" width="100%" style={{borderRadius:"20px"}}></img></div>
           <div style={MyCarousel.CARD_STYLE}><img src={quote2} height="100%" width="100%" style={{borderRadius:"20px"}}/></div>
           <div style={MyCarousel.CARD_STYLE}><img src={q1} height="100%" width="100%" style={{borderRadius:"20px"}}/></div>
